@@ -8,6 +8,7 @@ SAVEHIST=10000
 setopt SHARE_HISTORY
 setopt EXTENDED_HISTORY
 setopt nobeep
+setopt correct
 
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
@@ -21,7 +22,7 @@ ZSH_THEME="agnoster"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git ubuntu fabric git-flow rsync python virtualenv virtualenvwrapper)
+plugins=(git ubuntu fabric git-flow rsync python virtualenv virtualenvwrapper common-aliases)
 
 # User configuration
 
@@ -38,3 +39,8 @@ alias ev='vim ~/.vimrc.local'
 alias wwwserve='python -m SimpleHTTPServer'
 alias treed='tree -L 3 -d'
 alias treef='tree -L 3'
+
+alias -g L='| less'
+alias -g G='| ack'
+
+export GCS_LANGUAGE='en'
