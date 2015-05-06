@@ -34,6 +34,7 @@ source $ZSH/oh-my-zsh.sh
 # You may need to manually set your language environment
 export LANG=es_ES.UTF-8
 
+# Aliases
 alias ez='vim ~/.zshrc'
 alias ev='vim ~/.vimrc.local'
 alias wwwserve='python -m SimpleHTTPServer'
@@ -41,6 +42,6 @@ alias treed='tree -L 3 -d'
 alias treef='tree -L 3'
 
 alias -g L='| less'
-alias -g G='| ack'
+alias -g G='| ack-grep -H --sort-files'
 
 export GCS_LANGUAGE='en'
