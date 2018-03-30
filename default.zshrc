@@ -21,7 +21,7 @@ ZSH_THEME="agnoster_"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git ubuntu fabric git-flow rsync svn python virtualenv virtualenvwrapper)
+plugins=(git ubuntu fabric git-flow rsync svn python virtualenv virtualenvwrapper autojump)
 
 # User configuration
 
@@ -72,3 +72,11 @@ alias -g L='| less'
 
 alias grep='/bin/grep -RnisI --color=auto --exclude-dir={.pyc,.bzr,CVS,.git,.hg,.svn}'
 alias bgrep='/bin/grep'
+
+export VIRTUAL_ENV_DISABLE_PROMPT=
+export WORKON_HOME=$HOME/.virtualenvs
+export PROJECT_HOME=$HOME/Devel
+source  /usr/local/bin/virtualenvwrapper.sh
+
+export JAVA_HOME=/usr/lib/jvm/java-9-oracle
+export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python2
