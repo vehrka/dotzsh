@@ -67,11 +67,13 @@ alias wwwserve='python -m SimpleHTTPServer'
 alias treed='tree -L 3 -d'
 alias treef='tree -L 3'
 
-alias -g G='| /bin/grep'
+alias -g G='| grep'
 alias -g L='| less'
 
-alias grep='/bin/grep -RnisI --color=auto --exclude-dir={.pyc,.bzr,CVS,.git,.hg,.svn}'
-alias bgrep='/bin/grep'
+alias grep='grep -RnisI --color=auto --exclude-dir={.pyc,.bzr,CVS,.git,.hg,.svn}'
+#alias bgrep='/bin/grep'
+
+alias daily="git log --reverse --branches --since=yesterday --format=format:'%C(cyan) %ad %C(yellow)%h %Creset %s %Cgreen%d' --date=local"
 
 export VIRTUAL_ENV_DISABLE_PROMPT=
 export WORKON_HOME=$HOME/.virtualenvs
@@ -80,3 +82,4 @@ source  /usr/local/bin/virtualenvwrapper.sh
 
 export JAVA_HOME=/usr/lib/jvm/java-9-oracle
 export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python2
+export PATH="/usr/local/opt/sphinx-doc/bin:$PATH"
