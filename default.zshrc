@@ -11,42 +11,24 @@ setopt nobeep
 
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
-
-bindkey -v
-
 # Set name of the theme to load.
-ZSH_THEME="agnoster_"
+ZSH_THEME="agnoster"
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git ubuntu fabric git-flow rsync svn python virtualenv virtualenvwrapper)
+plugins=(autojump docker git git-flow opp python rsync tmux virtualenv virtualenvwrapper)
 
 # User configuration
 
 export PATH=$HOME/bin:/usr/local/bin:$PATH
+export PATH="/usr/local/opt/gdal2/bin:/Applications/Postgres.app/Contents/Versions/10/bin:/Users/pedro/Library/Python/3.7/bin:/Users/pedro/Library/Python/3.6/bin:/usr/local/opt/sphinx-doc/bin:/Users/pedro/Library/Python/2.7/bin:$PATH"
 
 source $ZSH/oh-my-zsh.sh
 
 # You may need to manually set your language environment
 export LANG=es_ES.UTF-8
-
-prompt_svn() {
-    local rev branch
-    if in_svn; then
-        rev=$(svn_get_rev_nr)
-        branch=$(svn_get_branch_name)
-        if [[ $(svn_dirty_choose_pwd 1 0) -eq 1 ]]; then
-            prompt_segment yellow black
-            echo -n "$rev@$branch"
-            echo -n "±"
-        else
-            prompt_segment green black
-            echo -n "$rev@$branch"
-        fi
-    fi
-}
 
 build_prompt() {
         RETVAL=$?
@@ -54,21 +36,30 @@ build_prompt() {
         prompt_context
         prompt_dir
         prompt_git
-        prompt_svn
         prompt_end
 }
 
-alias ei='vim ~/.config/i3/config'
 alias ez='vim ~/.zshrc'
-alias ev='vim ~/.vimrc.local'
+alias ev='vim ~/.vimrc'
 
 alias wwwserve='python -m SimpleHTTPServer'
 
 alias treed='tree -L 3 -d'
 alias treef='tree -L 3'
 
-alias -g G='| /bin/grep'
+alias -g G='| ack'
 alias -g L='| less'
 
-alias grep='/bin/grep -RnisI --color=auto --exclude-dir={.pyc,.bzr,CVS,.git,.hg,.svn}'
-alias bgrep='/bin/grep'
+#alias grep='grep -RnisI --color=auto --exclude-dir={.pyc,.bzr,CVS,.git,.hg,.svn}'
+#alias bgrep='/bin/grep'
+
+alias daily="git log --reverse --branches --since=yesterday --format=format:'%C(cyan) %ad %C(yellow)%h %Creset %s %Cgreen%d' --date=local"
+alias weekly="git log --reverse --branches --since='last week' --format=format:'%C(cyan) %ad %C(yellow)%h %Creset %s %Cgreen%d' --date=local"
+
+alias load_carto_env='source /tmp/cartoenv'
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/pedro/tools/google-cloud-sdk/path.zsh.inc' ]; then source '/Users/pedro/tools/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/pedro/tools/google-cloud-sdk/completion.zsh.inc' ]; then source '/Users/pedro/tools/google-cloud-sdk/completion.zsh.inc'; fi
