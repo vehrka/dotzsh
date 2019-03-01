@@ -3,11 +3,14 @@ DOTZSH
 
 Just my configuration for zsh
 
-:version: 1.6
-:date: 2019-01-11
+:version: 1.7
+:date: 2019-03-01
 
 Changelog
 ---------
+
+v 1.6.1
+    Changes in locale, plugins, paths and autocompletion
 
 v 1.6.0
     Changes in grep calls

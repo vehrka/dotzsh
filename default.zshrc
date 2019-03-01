@@ -18,17 +18,27 @@ ZSH_THEME="agnoster"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(autojump docker git git-flow opp python rsync tmux)
+plugins=(autojump docker fabric git git-flow rsync timer tmux ubuntu)
 
 # User configuration
 
-export PATH=$HOME/bin:/usr/local/bin:$PATH
-export PATH="/usr/local/opt/gdal2/bin:/Applications/Postgres.app/Contents/Versions/10/bin:/Users/pedro/Library/Python/3.7/bin:/Users/pedro/Library/Python/3.6/bin:/usr/local/opt/sphinx-doc/bin:/Users/pedro/Library/Python/2.7/bin:$PATH"
+export PATH="/snap/bin/:/usr/local/opt/gdal2/bin:/Applications/Postgres.app/Contents/Versions/10/bin:/Users/pedro/Library/Python/3.7/bin:/Users/pedro/Library/Python/3.6/bin:/usr/local/opt/sphinx-doc/bin:/Users/pedro/Library/Python/2.7/bin:$PATH"
+export PATH="$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH"
 
 source $ZSH/oh-my-zsh.sh
 
 # You may need to manually set your language environment
-export LANG=es_ES.UTF-8
+export LANG=en_IE.UTF-8
+export LC_ADDRESS=en_IE.UTF-8
+export LC_IDENTIFICATION=en_IE.UTF-8
+export LC_MEASUREMENT=en_IE.UTF-8
+export LC_MONETARY=en_IE.UTF-8
+export LC_NAME=en_IE.UTF-8
+export LC_NUMERIC=en_IE.UTF-8
+export LC_PAPER=en_IE.UTF-8
+export LC_TELEPHONE=en_IE.UTF-8
+export LC_TIME=en_IE.UTF-8
+export LC_CTYPE=en_IE.UTF-8
 
 build_prompt() {
         RETVAL=$?
@@ -41,6 +51,7 @@ build_prompt() {
 
 alias ez='vim ~/.zshrc'
 alias ev='vim ~/.vimrc'
+alias ei='vim ~/.config/i3/config'
 
 alias wwwserve='python -m SimpleHTTPServer'
 
@@ -59,7 +70,9 @@ alias weekly="git log --reverse --branches --since='last week' --format=format:'
 alias load_carto_env='source /tmp/cartoenv'
 
 # The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/pedro/tools/google-cloud-sdk/path.zsh.inc' ]; then source '/Users/pedro/tools/google-cloud-sdk/path.zsh.inc'; fi
+if [ -f '/home/pedro/google-cloud-sdk/path.zsh.inc' ]; then . '/home/pedro/google-cloud-sdk/path.zsh.inc'; fi
 
 # The next line enables shell command completion for gcloud.
-if [ -f '/Users/pedro/tools/google-cloud-sdk/completion.zsh.inc' ]; then source '/Users/pedro/tools/google-cloud-sdk/completion.zsh.inc'; fi
+if [ -f '/home/pedro/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/pedro/google-cloud-sdk/completion.zsh.inc'; fi
+source <(kubectl completion zsh)
+source ~/.invoke-completion.sh
