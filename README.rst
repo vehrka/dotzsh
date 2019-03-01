@@ -10,6 +10,8 @@ Changelog
 ---------
 
 v 1.6.0
+    Changes in grep calls
+    Creating alias for daily in git
     Adapting to the docker environment 
 
 v 1.5.0
