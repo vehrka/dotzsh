@@ -18,12 +18,20 @@ ZSH_THEME="agnoster"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(autojump docker fabric git git-flow rsync timer tmux ubuntu)
+plugins=(autojump docker docker-compose fabric git git-flow rsync timer tmux ubuntu)
 
 # User configuration
 
-export PATH="/snap/bin/:/usr/local/opt/gdal2/bin:/Applications/Postgres.app/Contents/Versions/10/bin:/Users/pedro/Library/Python/3.7/bin:/Users/pedro/Library/Python/3.6/bin:/usr/local/opt/sphinx-doc/bin:/Users/pedro/Library/Python/2.7/bin:$PATH"
+export PATH="/usr/local/opt/gdal2/bin:/Applications/Postgres.app/Contents/Versions/10/bin:/Users/pedro/Library/Python/3.7/bin:/Users/pedro/Library/Python/3.6/bin:/usr/local/opt/sphinx-doc/bin:/Users/pedro/Library/Python/2.7/bin:$PATH"
 export PATH="$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH"
+
+# SNAP 
+#
+# If you are using zsh, the snap binary and desktop directories will not automatically be added 
+# to your environment variables. In order to solve this, I added the following line to /etc/zsh/zprofile (taken from Arch):
+#
+# emulate sh -c 'source /etc/profile'
+
 
 source $ZSH/oh-my-zsh.sh
 
@@ -48,6 +56,9 @@ build_prompt() {
         prompt_git
         prompt_end
 }
+
+# CARTO_ENV
+export CARTO_ENV=/tmp/cartoenv
 
 alias ez='vim ~/.zshrc'
 alias ev='vim ~/.vimrc'
