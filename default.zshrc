@@ -63,13 +63,15 @@ alias ez='vim ~/.zshrc'
 alias ev='vim ~/.vimrc'
 alias ei='vim ~/.config/i3/config'
 
-alias wwwserve='python -m SimpleHTTPServer'
+alias wwwserve='python3 -m http.server 8000'
 
 alias treed='tree -L 3 -d'
 alias treef='tree -L 3'
 
 alias -g G='| ack'
 alias -g L='| less'
+alias -g J='| jq '
+alias -g CJ='| carto_batch read | jq '
 
 #alias grep='grep -RnisI --color=auto --exclude-dir={.pyc,.bzr,CVS,.git,.hg,.svn}'
 #alias bgrep='/bin/grep'
@@ -79,6 +81,10 @@ alias weekly="git log --reverse --branches --since='last week' --format=format:'
 
 alias load_carto_env='source /tmp/cartoenv'
 
+alias read_batch='carto_batch list | carto_batch read | jq . '
+
+alias cal='ncal -Mb '
+
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/home/pedro/google-cloud-sdk/path.zsh.inc' ]; then . '/home/pedro/google-cloud-sdk/path.zsh.inc'; fi
 
@@ -86,3 +92,5 @@ if [ -f '/home/pedro/google-cloud-sdk/path.zsh.inc' ]; then . '/home/pedro/googl
 if [ -f '/home/pedro/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/pedro/google-cloud-sdk/completion.zsh.inc'; fi
 source <(kubectl completion zsh)
 source ~/.invoke-completion.sh
+
+source ~/.db_aliases
