@@ -26,7 +26,7 @@ ZSH_THEME="agnoster_"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(autojump docker docker-compose fabric git git-flow rsync timer tmux ubuntu)
+plugins=(autojump docker docker-compose fabric git git-flow poetry rsync timer tmux ubuntu)
 
 # User configuration
 
