@@ -9,6 +9,13 @@ Just my configuration for zsh
 Changelog
 ---------
 
+v 1.7
+    Adding poetry plugin
+    Adding virtualenvwrapper stuff
+    Modifying python server
+    Just one Path
+    Improving snap apps support
+
 v 1.6.1
     Changes in locale, plugins, paths and autocompletion
 
