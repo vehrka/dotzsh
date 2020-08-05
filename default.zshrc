@@ -20,7 +20,7 @@ export WORKON_HOME=~/pyenvs
 # Settings
 #
 # Set name of the theme to load.
-ZSH_THEME="agnoster_"
+ZSH_THEME="agnoster"
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
@@ -30,11 +30,11 @@ plugins=(autojump docker docker-compose fabric git git-flow poetry rsync timer t
 
 # User configuration
 
-export PATH="$HOME/bin:$HOME/.local/bin:/usr/local/bin:$HOME/.cargo/bin:/usr/local/opt/gdal2/bin:/Applications/Postgres.app/Contents/Versions/10/bin:/Users/pedro/Library/Python/3.7/bin:/Users/pedro/Library/Python/3.6/bin:/usr/local/opt/sphinx-doc/bin:/Users/pedro/Library/Python/2.7/bin:$PATH"
+export PATH="$HOME/bin:$HOME/.local/bin:/usr/local/bin:$HOME/.cargo/bin:/usr/local/opt/gdal2/bin:/snap/bin:$PATH"
 
-# SNAP 
+# SNAP
 #
-# If you are using zsh, the snap binary and desktop directories will not automatically be added 
+# If you are using zsh, the snap binary and desktop directories will not automatically be added
 # to your environment variables. In order to solve this, I added the following line to /etc/zsh/zprofile (taken from Arch):
 #
 # emulate sh -c 'source /etc/profile'
@@ -63,12 +63,10 @@ build_prompt() {
         prompt_git
         prompt_end
 }
+RPROMPT="[%D{%y/%m/%f}|%*]"
 
 # CARTO_ENV
 export CARTO_ENV=/tmp/cartoenv
-
-# ALIAS
-#
 
 alias ez='vim ~/.zshrc'
 alias ev='vim ~/.vimrc'
@@ -76,14 +74,21 @@ alias ei='vim ~/.config/i3/config'
 
 alias wwwserve='python3 -m http.server 8000'
 
-alias treed='tree -L 3 -d'
-alias treef='tree -L 3'
-
+# apt install diff-so-fancy
 alias diff="diff-so-fancy"
-alias ls="exa"
+# cargo install exa
+alias ls="exa  --long --git -a --header --group"
+alias tree='exa --tree --level=2 --long -a --header --git'
+alias l="exa -lahF"
 alias la="l"
+# apt install fd-find
 alias find="fd"
 alias f="fd"
+# bat apt install bat
+alias cat="batcat"
+export MANPAGER="sh -c 'col -bx | batcat -l man -p'"
+#
+# tldr:: npm install -g tldr
 
 alias -g G='| ack'
 alias -g L='| less'
@@ -114,6 +119,6 @@ if [ -f '/home/pedro/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/pedro
 #
 
 source <(kubectl completion zsh)
-source ~/.invoke-completion.sh
 source ~/.db_aliases
-source /usr/local/bin/virtualenvwrapper.sh
+# source ~/.invoke-completion.sh
+# source /usr/local/bin/virtualenvwrapper.sh
