@@ -3,11 +3,38 @@ DOTZSH
 
 Just my configuration for zsh
 
-:version: 1.7
-:date: 2019-03-01
+:version: 1.7.1
+:date: 2020-12-09
+
+Keybindings
+-----------
+
+* `Ctrl-P`: Raises a fzf and sends to vim
+
+Alias
+-----------
+
+* `ei`: Edit config/i3/config
+* `ev`: Edit vimrc
+* `ez`: Edit zshrc
+
+* `wwwserve`: Serves current dir on http://localhost:8000
+
+* `daily`: last day git commits
+* `weekly`: last week git commits
+* `dmerge`: Delete merged branches
+
+* `xps`: ps -ax
+* `xpsg`: send xps to G
 
 Changelog
 ---------
+
+v 1.7.1
+    Created some sections and moved some entries
+    Increased History size
+    Added ps alias
+    Added fzf configuration
 
 v 1.7
     Adding poetry plugin
