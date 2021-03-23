@@ -6,6 +6,7 @@ SAVEHIST=10000
 setopt SHARE_HISTORY
 setopt EXTENDED_HISTORY
 setopt nobeep
+#
 ## Exports
 #
 # Path to your oh-my-zsh installation.
@@ -14,6 +15,7 @@ export ZSH=$HOME/.oh-my-zsh
 export WORKON_HOME=~/pyenvs
 export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
 export PATH="$HOME/bin:$HOME/.local/bin:/usr/local/bin:$HOME/.cargo/bin:/usr/local/opt/gdal2/bin:/snap/bin:$PATH"
+#
 # ON SNAP and PATH
 #
 # If you are using zsh, the snap binary and desktop directories will not automatically be added
@@ -36,7 +38,6 @@ export CARTO_ENV=/tmp/cartoenv
 # FZF and RIPGREP
 export FZF_DEFAULT_COMMAND='rg --files --hidden --follow'
 export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border'
-bindkey -s "^P" 'vim $(fzf)\n'
 fpath+=~/.zfunc
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 ## PROMPT
@@ -58,7 +59,26 @@ ZSH_THEME="agnoster"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(autojump docker docker-compose fabric git git-flow poetry rsync timer tmux ubuntu)
+plugins=(autojump docker docker-compose fabric git git-flow poetry rsync timer tmux ubuntu zsh-vi-mode)
+
+#
+# https://github.com/jeffreytse/zsh-vi-mode
+# git clone https://github.com/jeffreytse/zsh-vi-mode ~/.oh-my-zsh/plugins/zsh-vi-mode
+#
+# SOURCE
+#
+# User configuration
+# emulate sh -c 'source /etc/profile'
+source $ZSH/oh-my-zsh.sh
+source <(kubectl completion zsh)
+source ~/.db_aliases
+# source ~/.invoke-completion.sh
+source /usr/local/bin/virtualenvwrapper.sh
+# DOCKER
+#
+# Docker Builtkit
+export DOCKER_BUILDKIT=1
+export COMPOSE_DOCKER_CLI_BUILD=1
 ## ALIAS
 # To run a command without the alias use \ -> \ls instead of ls
 alias ez='vim ~/.zshrc'
@@ -69,9 +89,8 @@ alias wwwserve='python3 -m http.server 8000'
 alias diff="diff-so-fancy"
 # cargo install exa
 alias ls="exa  --long --git -a --header --group"
-alias tree='exa --tree --level=2 --long -a --header --git'
-alias l="/bin/ls"
 alias la="exa -lahF"
+alias tree='exa --tree --level=2 --long -a --header --git'
 # apt install fd-find
 alias f="fdfind"
 # bat apt install bat
@@ -92,21 +111,18 @@ alias xps='ps -ax '
 alias xpsg='ps -ax G '
 alias load_carto_env='source /tmp/cartoenv'
 alias read_batch='carto_batch list | carto_batch read | jq . '
-## Google cloud
 #
+## Google cloud
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/home/pedro/google-cloud-sdk/path.zsh.inc' ]; then . '/home/pedro/google-cloud-sdk/path.zsh.inc'; fi
 # The next line enables shell command completion for gcloud.
 if [ -f '/home/pedro/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/pedro/google-cloud-sdk/completion.zsh.inc'; fi
-# SOURCE
 #
-# User configuration
-# emulate sh -c 'source /etc/profile'
-source $ZSH/oh-my-zsh.sh
-source <(kubectl completion zsh)
-source ~/.db_aliases
-# source ~/.invoke-completion.sh
-source /usr/local/bin/virtualenvwrapper.sh
 ## OTHER
 autoload -Uz compinit
 zstyle ':completion:*' menu select
+#
+## BINDKEYS after VIM plugin
+function zvm_after_lazy_keybindings() {
+  bindkey -s "^F" 'vim $(fzf)\n'
+}
