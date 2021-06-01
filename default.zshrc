@@ -59,7 +59,7 @@ ZSH_THEME="agnoster"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(autojump docker docker-compose fabric git git-flow poetry rsync timer tmux ubuntu zsh-vi-mode)
+plugins=(autojump docker docker-compose fabric git git-flow poetry rsync timer tmux ubuntu)
 
 #
 # https://github.com/jeffreytse/zsh-vi-mode
@@ -111,6 +111,8 @@ alias xps='ps -ax '
 alias xpsg='ps -ax G '
 alias load_carto_env='source /tmp/cartoenv'
 alias read_batch='carto_batch list | carto_batch read | jq . '
+alias fdiff="git status -s | fzf --no-sort --reverse --preview 'git diff --color=always {+2} | diff-so-fancy' --bind=ctrl-j:preview-down --bind=ctrl-k:preview-up --preview-window=right:60%:wrap"
+
 #
 ## Google cloud
 # The next line updates PATH for the Google Cloud SDK.
@@ -123,6 +125,6 @@ autoload -Uz compinit
 zstyle ':completion:*' menu select
 #
 ## BINDKEYS after VIM plugin
-function zvm_after_lazy_keybindings() {
-  bindkey -s "^F" 'vim $(fzf)\n'
-}
+# function zvm_after_lazy_keybindings() {
+bindkey -s "^F" 'vim $(fzf)\n'
+# }
