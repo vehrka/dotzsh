@@ -14,7 +14,7 @@ export ZSH=$HOME/.oh-my-zsh
 # For virtualenvwrapper
 export WORKON_HOME=~/pyenvs
 export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
-export PATH="$HOME/bin:$HOME/.local/bin:/usr/local/bin:$HOME/.cargo/bin:/usr/local/opt/gdal2/bin:/snap/bin:$PATH"
+export PATH="$HOME/bin:$HOME/.local/bin:$HOME/.cargo/bin:$HOME/go/bin:/usr/local/bin:/usr/local/opt/gdal2/bin:/snap/bin:/usr/local/go/bin:$PATH"
 #
 # ON SNAP and PATH
 #
@@ -79,6 +79,7 @@ source /usr/local/bin/virtualenvwrapper.sh
 # Docker Builtkit
 export DOCKER_BUILDKIT=1
 export COMPOSE_DOCKER_CLI_BUILD=1
+export USE_GKE_GCLOUD_AUTH_PLUGIN=True
 ## ALIAS
 # To run a command without the alias use \ -> \ls instead of ls
 alias ez='vim ~/.zshrc'
@@ -93,14 +94,16 @@ alias la="exa -lahF"
 alias tree='exa --tree --level=2 --long -a --header --git'
 # apt install fd-find
 alias f="fdfind"
-# bat apt install bat
-alias cat="batcat"
-export MANPAGER="sh -c 'col -bx | batcat -l man -p'"
+# bat cargo install bat
+alias cat="bat"
+alias gcil="gcloud compute instances list"
+export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 #
 # tldr:: npm install -g tldr
 alias -g G='| ack'
 alias -g L='| less'
 alias -g J='| jq '
+alias -g JB='| jq | bat -l json '
 alias -g CJ='| carto_batch read | jq '
 #alias grep='grep -RnisI --color=auto --exclude-dir={.pyc,.bzr,CVS,.git,.hg,.svn}'
 alias daily="git log --reverse --branches --since=yesterday --format=format:'%C(cyan) %ad %C(yellow)%h %Creset %s %Cgreen%d' --date=local"
@@ -112,6 +115,13 @@ alias xpsg='ps -ax G '
 alias load_carto_env='source /tmp/cartoenv'
 alias read_batch='carto_batch list | carto_batch read | jq . '
 alias fdiff="git status -s | fzf --no-sort --reverse --preview 'git diff --color=always {+2} | diff-so-fancy' --bind=ctrl-j:preview-down --bind=ctrl-k:preview-up --preview-window=right:60%:wrap"
+alias kubegj='kubectl get jobs.batch'
+alias kubedj='kubectl describe job'
+alias kubegp='kubectl get pods'
+alias kubel='kubectl logs '
+alias kubelf='kubectl logs -f '
+alias kubex='kubectl exec '
+alias open='xdg-open'
 
 #
 ## Google cloud
