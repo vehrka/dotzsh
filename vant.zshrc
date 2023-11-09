@@ -38,11 +38,11 @@ export LC_TIME=en_IE.UTF-8
 export LC_CTYPE=en_IE.UTF-8
 
 # Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
+if [[ -n $SSH_CONNECTION ]]; then
+  export EDITOR='vim'
+else
+  export EDITOR='nvim'
+fi
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
@@ -81,3 +81,16 @@ alias -g G='| ack'
 alias -g L='| less'
 alias -g J='| jq '
 alias -g JB='| jq | bat -l json '
+
+alias dmerge='git branch --merged | egrep -v "(^\*|master|main|dev|development|stg|staging)" | xargs git branch -d'
+alias cal='ncal -Mb '
+alias xps='ps -ax '
+alias xpsg='ps -ax G '
+source ~/x1cg9/dotdb_aliases
+source /usr/share/nvm/init-nvm.sh
+
+# added by Snowflake SnowSQL installer
+export PATH=/home/perico/opt:$PATH
+autoload -U +X compinit && compinit
+autoload -U +X bashcompinit && bashcompinit
+source ~/.dbt-completion.bash
