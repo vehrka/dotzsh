@@ -79,6 +79,7 @@ alias f="fd"
 alias cat="bat"
 alias gcil="gcloud compute instances list"
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+export MANROFFOPT='-c'
 #
 # tldr:: npm install -g tldr
 alias -g G='| ack'
