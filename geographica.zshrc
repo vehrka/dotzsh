@@ -1,29 +1,29 @@
+# ########################################################################
 ## General
-#
+# ########################################################################
 HISTFILE=~/.zsh_history
 HISTSIZE=5000
 SAVEHIST=10000
 setopt SHARE_HISTORY
 setopt EXTENDED_HISTORY
 setopt nobeep
-#
+
+# ########################################################################
 ## Path
-#
+# ########################################################################
 export PATH="$HOME/bin:$HOME/.local/bin:$HOME/.cargo/bin:$HOME/go/bin:/usr/local/bin:/usr/local/opt/gdal2/bin:/snap/bin:/usr/local/go/bin:$PATH"
 
-# Path to your oh-my-zsh installation.
+# ########################################################################
+# ZSH CONFIG
+# ########################################################################
 export ZSH="$HOME/.oh-my-zsh"
-
 ZSH_THEME="agnoster"
-
 plugins=(autojump git)
-
 source $ZSH/oh-my-zsh.sh
 
-# User configuration
-
-# export MANPATH="/usr/local/man:$MANPATH"
-
+# ########################################################################
+# LOCALE configuration
+# ########################################################################
 # You may need to manually set your language environment
 export LANG=en_IE.UTF-8
 export LC_ADDRESS=en_IE.UTF-8
@@ -37,88 +37,77 @@ export LC_TELEPHONE=en_IE.UTF-8
 export LC_TIME=en_IE.UTF-8
 export LC_CTYPE=en_IE.UTF-8
 
-# Change default Browser
-export BROWSER=/usr/bin/google-chrome-stable
-export DEFAULT_BROWSER=/usr/bin/google-chrome-stable
-
+# ########################################################################
+# EDITOR
+# ########################################################################
 # Preferred editor for local and remote sessions
 if [[ -n $SSH_CONNECTION ]]; then
   export EDITOR='vim'
 else
   export EDITOR='nvim'
 fi
+# Change default Browser
+export BROWSER=/usr/bin/google-chrome-stable
+export DEFAULT_BROWSER=/usr/bin/google-chrome-stable
 
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
-export  USE_POWERLINE="true"
-
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
-#
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
-alias vim="nvim"
-alias vi="nvim"
-alias oldvim="vim"
-alias ez='vim ~/.zshrc'
-alias ev='vim ~/.config/nvim/init.vim'
-alias ei='vim ~/.i3/config'
-alias wwwserve='python3 -m http.server 8000'
-# pacman -S diff-so-fancy
-alias diff="diff-so-fancy"
-# cargo install eza
-alias ls="eza  --long --git -a --header --group"
-alias la="eza -lahF"
-alias tree='eza --tree --level=2 --long -a --header --git'
-# pacman -S fd
-alias f="fd"
-# bat cargo install bat
-alias cat="bat"
-alias gcil="gcloud compute instances list"
+# ########################################################################
+# FLAGS
+# ########################################################################
+export USE_POWERLINE="true"
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
-export MANROFFOPT="-c"
-#
-# tldr:: npm install -g tldr
+export MANROFFOPT='-c'
+
+# ########################################################################
+# ALIASES
+# ########################################################################
 alias -g G='| ack'
-alias -g L='| less'
 alias -g J='| jq '
 alias -g JB='| jq | bat -l json '
-alias -g CJ='| carto_batch read | jq '
-#alias grep='grep -RnisI --color=auto --exclude-dir={.pyc,.bzr,CVS,.git,.hg,.svn}'
-alias daily="git log --reverse --branches --since=yesterday --format=format:'%C(cyan) %ad %C(yellow)%h %Creset %s %Cgreen%d' --date=local"
-alias weekly="git log --reverse --branches --since='last week' --format=format:'%C(cyan) %ad %C(yellow)%h %Creset %s %Cgreen%d' --date=local"
-alias dmerge="git branch --merged| egrep -v '(^\*|master|dev|staging)'  | xargs git branch -d"
-
+alias -g L='| less'
 alias cal='ncal -Mb '
+alias cat="bat" # bat cargo install bat
+alias diff="diff-so-fancy" # pacman -S diff-so-fancy
+alias dmerge='git branch --merged | egrep -v "(^\*|master|main|dev|development|stg|staging)" | xargs git branch -d'
+alias ei='vim ~/.i3/config'
+alias elf='vim ~/.config/lf/lfrc'
+alias ev='vim ~/.config/nvim/init.vim'
+alias ez='vim ~/.zshrc'
+alias f="fd" # pacman -S fd
+alias gcil="gcloud compute instances list"
+alias la="eza -lahF" # cargo install eza
+alias lf='lfu'
+alias ls="eza --long --git -a --header --group"
+alias oldvim="vim"
+alias tree='eza --tree --level=2 --long -a --header --git'
+alias vi="nvim"
+alias vim="nvim"
+alias weather='curl wttr.in/Valencia+Spain'
+alias weather2='curl v2.wttr.in/Valencia+Spain'
+alias wwwserve='python3 -m http.server 8000'
 alias xps='ps -ax '
 alias xpsg='ps -ax G '
+alias open='xdg-open'
+alias hg='history | ack '
+alias tsr='tmux rename-session -t ' # -t oldname newname
+source ~/x1cg9/dotdb_aliases
 
+# ########################################################################
+# CARTO ALIASES
+# ########################################################################
 alias load_carto_env='source /tmp/cartoenv'
 alias read_batch='carto_batch list | carto_batch read | jq . '
-
 alias kubegj='kubectl get jobs.batch'
 alias kubedj='kubectl describe job'
 alias kubegp='kubectl get pods'
 alias kubel='kubectl logs '
 alias kubelf='kubectl logs -f '
 alias kubex='kubectl exec '
-
-alias open='xdg-open'
-alias weather_vlc_old='curl wttr.in/València'
-alias weather_vlc='curl v2.wttr.in/València'
-alias weather_per='curl v2.wttr.in/El_Perellonet'
-
-alias hg='history | ack '
-
-alias tsr='tmux rename-session -t ' # -t oldname newname
-source ~/.db_aliases
-
 # DBT
 alias activate_dbt='source ~/Env/dbt-env/bin/activate'
 
+# ########################################################################
+# OTHER
+# ########################################################################
 # added by Snowflake SnowSQL installer
 export PATH=/home/perico/opt:$PATH
 autoload -U +X compinit && compinit

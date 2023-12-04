@@ -46,6 +46,9 @@ if [[ -n $SSH_CONNECTION ]]; then
 else
   export EDITOR='nvim'
 fi
+# Change default Browser
+export BROWSER=/usr/bin/google-chrome-stable
+export DEFAULT_BROWSER=/usr/bin/google-chrome-stable
 
 # ########################################################################
 # FLAGS
@@ -83,6 +86,9 @@ alias weather2='curl v2.wttr.in/Valencia+Spain'
 alias wwwserve='python3 -m http.server 8000'
 alias xps='ps -ax '
 alias xpsg='ps -ax G '
+alias open='xdg-open'
+alias hg='history | ack '
+alias tsr='tmux rename-session -t ' # -t oldname newname
 source ~/x1cg9/dotdb_aliases
 
 # ########################################################################
