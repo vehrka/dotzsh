@@ -69,17 +69,17 @@ alias ei='vim ~/.i3/config'
 alias wwwserve='python3 -m http.server 8000'
 # pacman -S diff-so-fancy
 alias diff="diff-so-fancy"
-# cargo install exa
-alias ls="exa  --long --git -a --header --group"
-alias la="exa -lahF"
-alias tree='exa --tree --level=2 --long -a --header --git'
+# cargo install eza
+alias ls="eza  --long --git -a --header --group"
+alias la="eza -lahF"
+alias tree='eza --tree --level=2 --long -a --header --git'
 # pacman -S fd
 alias f="fd"
 # bat cargo install bat
 alias cat="bat"
 alias gcil="gcloud compute instances list"
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
-export MANROFFOPT='-c'
+export MANROFFOPT="-c"
 #
 # tldr:: npm install -g tldr
 alias -g G='| ack'
