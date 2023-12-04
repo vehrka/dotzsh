@@ -89,7 +89,7 @@ alias xpsg='ps -ax G '
 alias open='xdg-open'
 alias hg='history | ack '
 alias tsr='tmux rename-session -t ' # -t oldname newname
-source ~/x1cg9/dotdb_aliases
+source ~/.db_aliases
 
 # ########################################################################
 # CARTO ALIASES
