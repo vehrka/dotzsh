@@ -9,33 +9,12 @@ setopt EXTENDED_HISTORY
 setopt nobeep
 
 # ########################################################################
-## Path
-# ########################################################################
-export PATH="$HOME/bin:$HOME/.local/bin:$HOME/.cargo/bin:$HOME/go/bin:/usr/local/bin:/usr/local/opt/gdal2/bin:/snap/bin:/usr/local/go/bin:$PATH"
-
-# ########################################################################
 # ZSH CONFIG
 # ########################################################################
 export ZSH="$HOME/.oh-my-zsh"
 ZSH_THEME="agnoster"
-plugins=(autojump git)
+plugins=(autojump docker-compose git timer)
 source $ZSH/oh-my-zsh.sh
-
-# ########################################################################
-# LOCALE configuration
-# ########################################################################
-# You may need to manually set your language environment
-export LANG=en_IE.UTF-8
-export LC_ADDRESS=en_IE.UTF-8
-export LC_IDENTIFICATION=en_IE.UTF-8
-export LC_MEASUREMENT=en_IE.UTF-8
-export LC_MONETARY=en_IE.UTF-8
-export LC_NAME=en_IE.UTF-8
-export LC_NUMERIC=en_IE.UTF-8
-export LC_PAPER=en_IE.UTF-8
-export LC_TELEPHONE=en_IE.UTF-8
-export LC_TIME=en_IE.UTF-8
-export LC_CTYPE=en_IE.UTF-8
 
 # ########################################################################
 # EDITOR
@@ -108,12 +87,6 @@ alias activate_dbt='source ~/Env/dbt-env/bin/activate'
 # ########################################################################
 # OTHER
 # ########################################################################
-# added by Snowflake SnowSQL installer
-export PATH=/home/perico/opt:$PATH
 autoload -U +X compinit && compinit
 autoload -U +X bashcompinit && bashcompinit
 source ~/.dbt-completion.bash
-
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
