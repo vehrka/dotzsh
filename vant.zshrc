@@ -33,15 +33,15 @@ zstyle ':completion:*' use-cache on
 zstyle ':completion:*' cache-path ~/.zsh/cache
 
 # ########################################################################
-# ZSH CONFIG
+## ZSH CONFIG
 # ########################################################################
 export ZSH="$HOME/.oh-my-zsh"
 ZSH_THEME="agnoster"
-plugins=(autojump git timer)
+plugins=(autojump docker-compose git timer)
 source $ZSH/oh-my-zsh.sh
 
 # ########################################################################
-# EDITOR
+## EDITOR
 # ########################################################################
 # Preferred editor for local and remote sessions
 if [[ -n $SSH_CONNECTION ]]; then
@@ -54,14 +54,14 @@ export BROWSER=/usr/bin/google-chrome-stable
 export DEFAULT_BROWSER=/usr/bin/google-chrome-stable
 
 # ########################################################################
-# FLAGS
+## FLAGS
 # ########################################################################
 export USE_POWERLINE="true"
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 export MANROFFOPT='-c'
 
 # ########################################################################
-# ALIASES
+## ALIASES
 # ########################################################################
 alias -g G='| ack'
 alias -g J='| jq '
