@@ -92,7 +92,6 @@ alias xpsg='ps -ax G '
 alias open='xdg-open'
 alias hg='history | ack '
 alias tsr='tmux rename-session -t ' # -t oldname newname
-source ~/x1cg9/dotdb_aliases
 
 
 # ########################################################################
@@ -324,3 +323,57 @@ function mzc_termsupport_cwd {
 # i.e. when a script or function changes directory without `cd -q`, chpwd
 # will be called the output may be swallowed by the script or function.
 add-zsh-hook precmd mzc_termsupport_cwd
+
+# ########################################################################
+# Atuin
+# ########################################################################
+
+eval "$(atuin init zsh)"
+
+
+# ########################################################################
+# FZF Config
+# ########################################################################
+# Use the CLI fd to respect ignore files (like '.gitignore'),
+# display hidden files, and exclude the '.git' directory.
+export FZF_DEFAULT_COMMAND='fd . --hidden --exclude ".git"'
+
+source /usr/share/fzf/key-bindings.zsh
+source /usr/share/fzf/completion.zsh
+
+# Use the CLI ripgrep to respect ignore files (like '.gitignore'),
+# display hidden files, and exclude the '.git' directory.
+# export FZF_DEFAULT_COMMAND='rg --files --hidden --glob "!.git"'
+# Use the CLI find to get all files, excluding any filepath
+# containing the string "git".
+# export FZF_DEFAULT_COMMAND='find . -type f ! -path "*git*"'
+
+# Options to fzf command
+export FZF_COMPLETION_OPTS='--border --info=inline'
+
+# Use fd (https://github.com/sharkdp/fd) for listing path candidates.
+# - The first argument to the function ($1) is the base path to start traversal
+# - See the source code (completion.{bash,zsh}) for the details.
+_fzf_compgen_path() {
+  fd --hidden --follow --exclude ".git" . "$1"
+}
+
+# Use fd to generate the list for directory completion
+_fzf_compgen_dir() {
+  fd --type d --hidden --follow --exclude ".git" . "$1"
+}
+
+# Advanced customization of fzf options via _fzf_comprun function
+# - The first argument to the function is the name of the command.
+# - You should make sure to pass the rest of the arguments to fzf.
+_fzf_comprun() {
+  local command=$1
+  shift
+
+  case "$command" in
+    cd)           fzf --preview 'tree -C {} | head -200'   "$@" ;;
+    export|unset) fzf --preview "eval 'echo \$'{}"         "$@" ;;
+    ssh)          fzf --preview 'dig {}'                   "$@" ;;
+    *)            fzf --preview 'bat -n --color=always {}' "$@" ;;
+  esac
+}
