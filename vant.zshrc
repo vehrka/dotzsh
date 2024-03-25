@@ -68,31 +68,32 @@ alias -g J='| jq '
 alias -g JB='| jq | bat -l json '
 alias -g L='| less'
 alias cal='ncal -Mb '
-alias cat="bat" # bat cargo install bat
-alias diff="diff-so-fancy" # pacman -S diff-so-fancy
+alias cat='bat' # bat cargo install bat
+alias diff='diff-so-fancy' # pacman -S diff-so-fancy
 alias dmerge='git branch --merged | egrep -v "(^\*|master|main|dev|development|stg|staging)" | xargs git branch -d'
 alias ei='vim ~/.i3/config'
 alias elf='vim ~/.config/lf/lfrc'
 alias ev='vim ~/.config/nvim/init.vim'
 alias ez='vim ~/.zshrc'
-alias f="fd" # pacman -S fd
-alias gcil="gcloud compute instances list"
-alias la="eza -lahF" # cargo install eza
+alias f='fd' # pacman -S fd
+alias gcil='gcloud compute instances list'
+alias hg='history | ack '
+alias la='eza -lahF' # cargo install eza
 alias lf='lfu'
-alias ls="eza --long --git -a --header --group"
-alias oldvim="vim"
+alias ls='eza --long --git -a --header --group'
+alias oldvim='vim'
+alias open='xdg-open'
 alias tree='eza --tree --level=2 --long -a --header --git'
-alias vi="nvim"
-alias vim="nvim"
-alias weather='curl wttr.in/Valencia+Spain'
+alias tsr='tmux rename-session -t ' # -t oldname newname
+alias vi='nvim'
+alias vim='nvim'
 alias weather2='curl v2.wttr.in/Valencia+Spain'
+alias weather='curl wttr.in/Valencia+Spain'
 alias wwwserve='python3 -m http.server 8000'
 alias xps='ps -ax '
 alias xpsg='ps -ax G '
 alias open='xdg-open'
-alias hg='history | ack '
 alias tsr='tmux rename-session -t ' # -t oldname newname
-
 
 # ########################################################################
 ## OTHER
